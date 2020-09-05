@@ -1,0 +1,200 @@
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8">
+		<!-- MDUI CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.0/dist/css/mdui.min.css" integrity="sha384-2PJ2u4NYg6jCNNpv3i1hK9AoAqODy6CdiC+gYiL2DVx+ku5wzJMFNdE3RoWfBIRP"
+		 crossorigin="anonymous" />
+
+		<!-- MDUI JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.0/dist/js/mdui.min.js" integrity="sha384-aB8rnkAu/GBsQ1q6dwTySnlrrbhqDwrDnpVHR2Wgm8pWLbwUnzDcIROX3VvCbaK+"
+		 crossorigin="anonymous"></script>
+
+		<!-- juxtaposeJS -->
+		<script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+		<link rel="stylesheet" href="./custom.css">
+		<!--css配置文件
+		<style type="text/css">
+			#foo {
+				display: inline-block;
+				width: 50%;
+				border: teal 5px solid;
+				border-radius: 5px;
+			}
+		
+			.input-group-label {
+				display: flex;
+				align-items: center;
+				align-content: center;
+				margin-bottom: .5rem;
+			}
+			.input-group-addon{
+				flex-shrink: 0;
+				    background-color: #f0f0f0;
+				    border: 1px solid #d4d4d4;
+				    font-size: 85%;
+				    border-radius: 4px;
+				    color: gray;
+				    padding: 5px 10px;
+			}
+			#starting-position{
+				width: 10px;
+			}
+			body{
+				background: url(bg.png) no-repeat center 0;
+			}
+			.mdui-textfield-label{
+				color: black;
+				font-weight: 800;
+			}
+		</style>
+		-->
+	</head>
+	<body class="mdui-text-color-black">
+		<div class="mdui-typo-display-2-opacity" style="text-align: center;">示例</div>
+		<div class="mdui-container">
+			<!-- 示例的居中与展示 -->
+			<div style="text-align: center;">
+				<div id="foo">
+				</div>
+			</div>
+
+			<br><br><br>
+			<!-- 分割线 -->
+			<div class="mdui-divider-dark"></div><br><br>
+
+			<h2>图片</h2>
+			<!-- 网格化排版处理 -->
+			<div class="mdui-row">
+				<div class="mdui-col-sm-6">
+					<p class="mdui-text-center">左边的图片<br><br>
+						<img id="left" class="mdui-img-circle mdui-hoverable" src="./b.jpg" /></p>
+					<div class="mdui-textfield">
+						<label class="mdui-textfield-label">图片URL</label>
+						<input id="url1" class="mdui-textfield-input" type="text" />
+					</div>
+					<div class="mdui-textfield">
+						<label class="mdui-textfield-label">图片日期</label>
+						<input id="label1" class="mdui-textfield-input" type="text" />
+					</div>
+					<div class="mdui-textfield">
+						<label class="mdui-textfield-label">署名</label>
+						<input id="credit1" class="mdui-textfield-input" type="text" />
+					</div>
+				</div>
+				<div class="mdui-col-sm-6">
+					<p class="mdui-text-center">右边的图片<br><br>
+						<img id="right" class="mdui-img-circle mdui-hoverable" src="./b.jpg" /></p>
+					<div class="mdui-textfield">
+						<label class="mdui-textfield-label">图片URL</label>
+						<input id="url2" class="mdui-textfield-input" type="text" />
+					</div>
+					<div class="mdui-textfield">
+						<label class="mdui-textfield-label">图片日期</label>
+						<input id="label2" class="mdui-textfield-input" type="text" />
+					</div>
+					<div class="mdui-textfield">
+						<label class="mdui-textfield-label">署名</label>
+						<input id="credit2" class="mdui-textfield-input" type="text" />
+					</div>
+				</div>
+			</div>
+
+			<h3>选项</h3>
+			<form>
+				<p>
+					<div class="input-group-label">
+						初始位置&nbsp;
+						<input id="starting-position" type="number" size="2" placeholder="50" value="50" min="0" max="100" name="slider-start"
+						 step="1" style=" width: 45px;">
+						<div class="input-group-addon">%</div>
+					</div>
+					显示日期&nbsp;
+					<label class="mdui-switch">
+						<input id="1" type="checkbox" checked />
+						<i class="mdui-switch-icon"></i>
+					</label>&nbsp;
+					显示署名&nbsp;
+					<label class="mdui-switch">
+						<input id="2" type="checkbox" checked />
+						<i class="mdui-switch-icon"></i>
+					</label>&nbsp;
+					启用动画&nbsp;
+					<label class="mdui-switch">
+						<input id="3" type="checkbox" checked />
+						<i class="mdui-switch-icon"></i>
+					</label>&nbsp;
+					响应式&nbsp;
+					<label class="mdui-switch">
+						<input id="4" type="checkbox" checked />
+						<i class="mdui-switch-icon"></i>
+					</label>
+				</p>
+			</form>
+			<button class="mdui-btn mdui-btn-raised" onclick="outPush()">预览</button>
+			<script type="text/javascript" src="./outPush.js"></script>
+			<!--实现按钮功能JS
+			<script type="text/javascript">
+				function outPush() {
+					var showLabel = document.getElementById("1").checked;
+					var showCredit = document.getElementById("2").checked;
+					var showAnimate = document.getElementById("3").checked;
+					var showResponsive = document.getElementById("4").checked;
+					var startPosition = document.getElementById("starting-position").value;
+					var URL1 = document.getElementById("url1").value;
+					var URL2 = document.getElementById("url2").value;
+					var label1 = document.getElementById("label1").value;
+					var label2 = document.getElementById("label2").value;
+					var credit1 = document.getElementById("credit1").value;
+					var credit2 = document.getElementById("credit2").value;
+					var elemold = document.getElementById("preview");
+
+					elemold.innerHTML = elemold.innerHTML + "<div id=\"foo1\"></div>";
+					document.getElementById("left").setAttribute("src", URL1);
+					document.getElementById("right").setAttribute("src", URL2);
+					slider = new juxtapose.JXSlider('#foo1',
+						[{
+								src: URL1,
+								label: label1,
+								credit: credit1
+							},
+							{
+								src: URL2,
+								label: label2,
+								credit: credit2
+							}
+						], {
+							animate: showAnimate,
+							showLabels: showLabel,
+							showCredits: showCredit,
+							startingPosition: startPosition + "%",
+							makeResponsive: showResponsive
+						});
+				}
+			</script>
+			-->
+			<br><br>
+			<div id="preview" class="mdui-valign"></div>
+		</div>
+		<script>
+			slider = new juxtapose.JXSlider('#foo',
+				[{
+						src: './b.jpg',
+						label: '2010',
+						credit: 'My daughter'
+					},
+					{
+						src: './b.jpg',
+						label: '2020',
+						credit: "My forever daughter"
+					}
+				], {
+					animate: true,
+					showLabels: true,
+					showCredits: true,
+					startingPosition: "50%",
+					makeResponsive: true
+				});
+		</script>
+	</body>
+</html>
